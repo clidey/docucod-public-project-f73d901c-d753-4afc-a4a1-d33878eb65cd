@@ -1,0 +1,207 @@
+---
+title: "Troubleshooting Common Issues"
+description: "Addresses typical problems faced during installation or first run, ranging from dependency issues to startup errors. Provides practical diagnostic steps, recommended solutions, and links to further resources or community support channels."
+---
+
+# Troubleshooting Common Issues
+
+This guide helps you quickly diagnose and resolve frequent problems encountered during NeuralFlow installation and first run. By following practical troubleshooting steps, you'll minimize downtime and ensure a smooth setup experience.
+
+---
+
+## 1. Installation Issues
+
+### Problem: Dependencies Fail to Install
+
+**Symptoms:**
+- `npm install` or `yarn install` commands hang, error out, or report missing packages.
+
+**Resolution Steps:**
+1. **Verify Node.js and Package Manager Versions**
+   - Ensure you have Node.js version 16.x or later installed.
+   - Use compatible package managers: npm (>=8), yarn (latest), or pnpm.
+   - Check versions:
+     ```bash
+     node -v
+     npm -v
+     yarn -v  # if using yarn
+     ```
+
+2. **Clear Cache and Retry**
+   - Clear the npm/yarn/pnpm cache:
+     ```bash
+     npm cache clean --force
+     yarn cache clean
+     pnpm cache clean
+     ```
+   - Delete `node_modules` and lock files (`package-lock.json` or `yarn.lock`).
+   - Reinstall dependencies:
+     ```bash
+     npm install
+     # OR
+     yarn install
+     # OR
+     pnpm install
+     ```
+
+3. **Network and Proxy**
+   - Ensure no firewall, VPN, or proxy is blocking package registry URLs.
+   - Try switching networks or use a VPN if behind a restrictive firewall.
+
+4. **Permissions**
+   - Run the install commands with proper permissions.
+   - Avoid `sudo` unless necessary.
+
+<Tip>
+If you encounter persistent errors with specific packages, consult the package's GitHub issues or forums for known conflicts with your OS or Node.js version.
+</Tip>
+
+---
+
+### Problem: `git` Not Found or Cloning Fails
+
+**Symptoms:**
+- Error during cloning the NeuralFlow repo or submodules
+
+**Resolution Steps:**
+1. Confirm Git is installed:
+   ```bash
+   git --version
+   ```
+2. If not installed, download and install Git from https://git-scm.com/downloads
+
+3. Ensure your SSH keys (if using SSH clone) or credentials are correctly configured for private repos.
+
+4. Retry cloning:
+   ```bash
+   git clone https://github.com/thedevflex/neuralflow.git
+   ```
+
+---
+
+## 2. Startup and First Run Problems
+
+### Problem: Server Does Not Start or Crashes Immediately
+
+**Symptoms:**
+- Running `npm run dev` or `yarn dev` throws errors and the server doesn't start.
+- Terminal output shows missing environment variables or module errors.
+
+**Resolution Steps:**
+1. **Check Environment Variables**
+   - NeuralFlow requires key environment variables for authentication and configuration.
+   - Ensure `.env.local` exists at the root with correct values:
+     ```env
+     GOOGLE_CLIENT_ID=your-google-client-id
+     GOOGLE_CLIENT_SECRET=your-google-client-secret
+     ```
+   - Missing or incorrect OAuth credentials will cause startup failure.
+   
+2. **Install All Dependencies**
+   - Run `npm install` or equivalent to ensure no missing dependencies.
+
+3. **Verify Node.js Compatibility**
+   - Use Node.js 16+ as older versions may cause runtime failures.
+
+4. **Check Logs for Specific Errors**
+   - Review terminal output carefully for missing modules, permissions, or port conflicts.
+
+5. **Port Conflicts**
+   - By default, NeuralFlow runs on port 3000.
+   - Ensure no other process is using the port:
+     ```bash
+     lsof -i :3000
+     ```
+   - If busy, either stop the conflicting service or run NeuralFlow on a different port:
+     ```bash
+     PORT=3001 npm run dev
+     ```
+
+6. **Restart the machine**
+   - Some system-level issues clear after a restart.
+
+<Tip>
+Add missing environment values first, then run `npm run dev` again. This often resolves the majority of startup errors.
+</Tip>
+
+---
+
+### Problem: Browser Cannot Connect to http://localhost:3000
+
+**Symptoms:**
+- Browser times out or shows 'Cannot connect' after starting the server successfully.
+
+**Resolution Steps:**
+1. Verify the server is running without errors.
+
+2. Check firewall or antivirus programs that might block local ports.
+
+3. Attempt to access using `http://127.0.0.1:3000` instead of `localhost`.
+
+4. Use different browsers or incognito/private mode to rule out caching issues.
+
+5. Confirm the correct port is open and NeuralFlow is listening:
+   ```bash
+   netstat -an | grep 3000
+   ```
+
+---
+
+## 3. Authentication & OAuth Issues
+
+### Problem: Unable to Log In or OAuth Fails
+
+**Symptoms:**
+- Google login fails or redirects endlessly.
+
+**Resolution Steps:**
+1. Verify Google OAuth credentials in `.env.local` and that they match those set in the Google Cloud Console.
+
+2. Make sure redirect URIs are configured correctly in Google OAuth settings:
+   - `http://localhost:3000/api/auth/callback/google`
+
+3. Clear browser cookies and cache.
+
+4. Check terminal logs for authentication errors.
+
+---
+
+## 4. Common Build and Runtime Errors
+
+### Error: Module Not Found or Unexpected Token
+
+- Run `npm install` to ensure all dependencies are fetched.
+- Delete `node_modules` and reinstall if errors persist.
+- Verify you are on Node.js 16+.
+
+### Error: Tailwind CSS Not Applying Styles
+
+- Confirm `tailwind.config.ts` is correctly configured.
+- Check imports of the global CSS file `app/globals.css`.
+- Restart the development server after config changes.
+
+---
+
+## 5. Diagnostic and Recovery Tips
+
+- **Use Verbose Logging:** Start the app with verbose logging enabled to get detailed error info.
+- **Check Issue Tracker:** Visit the [NeuralFlow GitHub Issues](https://github.com/thedevflex/neuralflow/issues) for reported bugs and fixes.
+- **Community Support:** Use community forums or chat channels linked in the NeuralFlow documentation.
+- **Update Dependencies Regularly:** Keep your local repo and dependencies up to date with the latest main branch changes.
+
+---
+
+## 6. Additional Resources
+
+- [Installation Guide](/getting-started/setup-and-installation/installation) — Detailed setup instructions
+- [First Run & Verification](/getting-started/setup-and-installation/first-run) — How to launch and verify NeuralFlow
+- [Configuration Steps](/getting-started/configuration-and-troubleshooting/configuration-steps) — Environment and OAuth setup
+- [Product Architecture](/overview/architecture-concepts/product-architecture) — Understand system components and their role
+
+<Check>
+If you experience issues beyond those listed here, please submit an issue on GitHub or reach out via the official support channels with full error logs and environmental details.
+</Check>
+
+---
+
+With this troubleshooting guide, you can swiftly overcome barriers to using NeuralFlow, ensuring a dependable path toward building your first machine learning no-code model with confidence.
