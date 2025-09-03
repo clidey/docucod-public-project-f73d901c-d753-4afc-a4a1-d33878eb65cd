@@ -1,0 +1,176 @@
+---
+title: "Configuration Steps"
+description: "Introduces any required or recommended configuration files (such as environment variables or theme settings) with guidance on where to find and edit them. Covers the basics of adapting NeuralFlow to your needs prior to first model-building."
+---
+
+# Configuration Steps
+
+Welcome to the NeuralFlow configuration guide. Before you dive into building your first model, it's essential to tailor the platform to your environment and preferences. This guide walks you through the key configuration files, environment variables, and theme settings you need to know to adapt NeuralFlow to your workflow smoothly.
+
+---
+
+## 1. Understanding Configuration Files
+
+NeuralFlow relies on several configuration files and environment settings that control its behavior during model building and execution. These are primarily used to set up API keys, theme preferences, and environment-specific parameters.
+
+### Key Configuration Files
+
+- **`.env` or `.env.local`** — Houses environment variables such as API keys and authentication secrets.
+- **`tailwind.config.ts`** — Defines styling, colors, and themes for the NeuralFlow UI.
+- **`next.config.js` or equivalent Next.js config files** — Manage runtime configuration and build settings.
+
+Knowing where and how to edit these files is critical to successful setup.
+
+---
+
+## 2. Setting Up Environment Variables
+
+Environment variables provide secure and configurable access to resources NeuralFlow depends on, such as authentication providers and external APIs.
+
+### Common Environment Variables
+
+- `NEURAL_FLOW_API_KEY` — Your private API key to access NeuralFlow services programmatically.
+- `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` — Credentials used if you enable Google OAuth for authentication.
+
+### How to Configure
+
+1. Create a file named `.env.local` at the root of your NeuralFlow project if it does not exist.
+
+2. Add the following entries, replacing placeholder values with your actual keys:
+
+   ```bash
+   NEURAL_FLOW_API_KEY="your_api_key_here"
+   GOOGLE_CLIENT_ID="your_google_client_id_here"
+   GOOGLE_CLIENT_SECRET="your_google_client_secret_here"
+   ```
+
+3. Save the file. These variables will automatically be loaded during development and production builds.
+
+### Important Tips
+
+- Never commit `.env.local` or files containing sensitive keys to public repositories.
+- Use environment-specific files (`.env.production`, `.env.development`) to separate settings as needed.
+
+---
+
+## 3. Customizing Theme and Styling
+
+NeuralFlow uses Tailwind CSS for styling, configured via `tailwind.config.ts`. This allows you to personalize the UI colors, shadows, and layout settings to fit your brand or preferences.
+
+### Where to Find `tailwind.config.ts`
+
+Located at the root or in the `src` directory, this file includes options such as:
+
+- Color palette adjustments (primary, secondary, accent colors)
+- Container padding and screen size settings
+- Dark mode toggling
+- Custom box shadows and border radii
+
+### Editing Example
+
+To modify the primary color, locate the `colors.primary.DEFAULT` property and update the `hsl()` values:
+
+```ts
+colors: {
+  primary: {
+    DEFAULT: "hsl(210, 100%, 56%)", // New blue shade
+    foreground: "hsl(210, 50%, 98%)",
+  },
+  // other colors
+},
+```
+
+### Restart Required
+
+After changing your Tailwind config, restart your development server to see the changes reflected.
+
+---
+
+## 4. Adapting NeuralFlow Before Your First Model
+
+Before you start building models, confirm all configurations are correctly in place.
+
+### Checklist
+
+- You have created and populated the `.env.local` file with your necessary API keys.
+- Your `tailwind.config.ts` reflects your preferred UI theme or remains default if you prefer standard styling.
+- All dependencies are installed, and your environment matches the prerequisites covered in the [Prerequisites & System Requirements](/getting-started/setup-and-installation/prerequisites).
+
+### Verifying Configuration
+
+Run NeuralFlow locally and observe the login/authentication screens:
+
+- If Google OAuth is configured properly, you will see Google sign-in options.
+- An API key error generally indicates missing or incorrect `NEURAL_FLOW_API_KEY`.
+
+To check environment variables in runtime, you can add a temporary log in your React components or backend APIs to confirm they are loaded.
+
+<Tip>
+Ensure your `.env.local` file uses double quotes around variable values if they contain special characters.
+</Tip>
+
+---
+
+## 5. Troubleshooting Common Configuration Issues
+
+<AccordionGroup title="Common Configuration Issues">  
+<Accordion title="Environment Variables Not Loading">  
+If your environment variables don't take effect:  
+- Confirm the `.env.local` file is in your project root.  
+- Ensure variable names match exactly and no extra spaces exist.  
+- Restart your development server after changes.  
+- For production, verify your deployment platform supports environment variables correctly.  
+</Accordion>  
+<Accordion title="Google OAuth Fails to Authenticate">  
+- Check if `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` are set properly.  
+- Visit Google Cloud Console to verify OAuth consent screen and authorized redirect URIs.  
+- Confirm that the URLs used match your local or deployed environment exactly.  
+</Accordion>  
+<Accordion title="Tailwind Styles Not Updating">  
+- Restart your dev server after editing `tailwind.config.ts`.  
+- Check if your CSS importing in `globals.css` or elsewhere is intact.  
+- Validate that Tailwind plugin is enabled in `postcss.config.js`.  
+</Accordion>  
+</AccordionGroup>
+
+---
+
+## 6. Where to Edit Configuration Files
+
+| Configuration File | Purpose                          | Suggested Location       |
+|--------------------|--------------------------------|-------------------------|
+| `.env.local`       | API keys, OAuth credentials      | Project Root            |
+| `tailwind.config.ts` | UI theming and styles           | Project Root or `src`   |
+| `next.config.js`    | Next.js app settings (optional) | Project Root            |
+
+You can edit these files with any text editor or IDE of your choice. Use caution especially with `.env` files to prevent exposing secrets.
+
+---
+
+## 7. Next Steps
+
+With your configuration set up, you are ready to:
+
+- Launch NeuralFlow as described in the [First Run & Verification](/getting-started/setup-and-installation/first-run) guide.
+- Begin building your first model with the no-code builder using the [Build Your First Model (No Code)](/guides/core-workflows/first-model) walkthrough.
+
+Refer to the [Troubleshooting Common Issues](/getting-started/configuration-and-troubleshooting/troubleshooting) page if you encounter any problems during setup.
+
+---
+
+### Additional Resources
+
+- [NeuralFlow Environment Variables Overview (GitHub)](https://github.com/thedevflex/neuralflow)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs/configuration)
+- [NextAuth.js Google Provider Setup](https://next-auth.js.org/providers/google)
+
+---
+
+Thank you for choosing NeuralFlow. Proper configuration accelerates your path to effective model building and deployment.
+
+
+---
+
+<Check>
+You have now configured NeuralFlow's environment and theme settings, setting a robust foundation for your machine learning workflows.
+</Check>

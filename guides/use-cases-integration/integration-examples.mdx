@@ -1,0 +1,196 @@
+---
+title: "Integrating NeuralFlow with External Tools"
+description: "Guides users through exporting models or results from NeuralFlow and plugging them into other environments (e.g., TensorFlow, Python scripts, or API endpoints). Includes tips for best practices and troubleshooting common integration paths."
+---
+
+# Integrating NeuralFlow with External Tools
+
+This guide helps you seamlessly export models and results from NeuralFlow to use in other environments such as TensorFlow, Python scripts, or API endpoints. It provides practical workflows, best practices, and troubleshooting tips to ensure your integration efforts succeed without disruption.
+
+---
+
+## 1. Workflow Overview
+
+### Task Description
+Export your NeuralFlow models and outputs to external platforms to enable further experimentations, deployment, or embedding in applications.
+
+### Prerequisites
+- You have a trained model or a saved NeuralFlow project.
+- Familiarity with basic NeuralFlow navigation and model building (see [Build Your First Model (No Code)](/guides/core-workflows/first-model)).
+- Access to the target environment (e.g., Python with TensorFlow installed, or API credentials).
+
+### Expected Outcome
+You will successfully export your model artifacts in formats compatible with external tools and learn how to import or call them outside NeuralFlow.
+
+### Time Estimate
+Approximately 15-30 minutes, depending on the integration complexity.
+
+### Difficulty Level
+Beginner to Intermediate.
+
+---
+
+## 2. Step-by-Step Instructions
+
+### Step 1: Exporting Your Model from NeuralFlow
+1. Navigate to your model's workspace within NeuralFlow.
+2. Locate the export/download options, typically available after saving or training your model.
+3. Choose your export format:
+   - **Python code snippet**: Provides TensorFlow-compatible Python code for model architecture.
+   - **Serialized model file**: TensorFlow `.h5` or SavedModel formats suitable for loading directly.
+4. Save the exported file locally or copy the generated code snippet.
+
+#### Expected Result:
+You have either a `.h5`/SavedModel file or Python code representing your model ready for external use.
+
+---
+
+### Step 2: Using Your Exported Model in Python
+1. Open your Python environment.
+2. If you exported Python code, paste it directly into your script or notebook to recreate the model architecture.
+   - Example snippet:
+   ```python
+   conv1 = Conv2D(4, (3, 3), activation='relu', padding='same')(input_img)
+   conv1 = Conv2D(4, (3, 3), activation='relu', padding='same')(conv1)
+   pool1 = MaxPooling2D(pool_size=(2, 2))(conv1)
+   # ... rest of the model layers
+   ```
+3. If you exported a serialized model file, load it using TensorFlow:
+   ```python
+   import tensorflow as tf
+   model = tf.keras.models.load_model('path_to_model.h5')
+   ```
+
+#### Expected Result:
+Your model is instantiated or loaded and ready for further training, evaluation, or inference within your Python environment.
+
+---
+
+### Step 3: Importing Models Programmatically Using NeuralFlow Package
+For dynamic model fetching without manual downloads, use the NeuralFlow Python package.
+
+1. Install the package (if not installed):
+   ```bash
+   pip install neuralflow
+   ```
+2. Use your API key to retrieve models by ID:
+   ```python
+   import neuralflow as nf
+
+   NEURAL_FLOW_API_KEY = "your_api_key_here"
+
+   model = nf.getModel(
+       id="your_model_id",
+       api_key=NEURAL_FLOW_API_KEY
+   )
+   ```
+
+#### Expected Result:
+Your code imports the latest version of a model directly from NeuralFlow without manual download.
+
+---
+
+### Step 4: Integrating Models via API Endpoints
+NeuralFlow supports generating API keys to deploy your models as endpoints.
+
+1. In NeuralFlow, generate an API key linked to your model.
+2. Use this key in your application to call the model endpoint for predictions.
+
+Example of usage in a Python script:
+```python
+import requests
+
+api_url = "https://neuralflow.example.com/api/predict"
+api_key = "your_generated_api_key"
+
+headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+payload = {"input": your_input_data}
+
+response = requests.post(api_url, json=payload, headers=headers)
+print(response.json())
+```
+
+#### Expected Result:
+Your external application can perform inference requests seamlessly against your deployed NeuralFlow model.
+
+---
+
+## 3. Examples & Code Samples
+
+### Example 1: Exporting and Using a UNet Model
+```python
+# Excerpt from exported NeuralFlow Python code for a UNet architecture
+conv1 = Conv2D(4, (3, 3), activation='relu', padding='same')(input_img)
+conv1 = Conv2D(4, (3, 3), activation='relu', padding='same')(conv1)
+pool1 = MaxPooling2D(pool_size=(2, 2))(conv1)
+
+conv2 = Conv2D(8, (3, 3), activation='relu', padding='same')(pool1)
+conv2 = Conv2D(8, (3, 3), activation='relu', padding='same')(conv2)
+pool2 = MaxPooling2D(pool_size=(2, 2))(conv2)
+
+conv3 = Conv2D(16, (3, 3), activation='relu', padding='same')(pool2)
+conv3 = Conv2D(16, (3, 3), activation='relu', padding='same')(conv3)
+
+# Decoding path
+up1 = UpSampling2D((2, 2))(conv3)
+concat1 = Concatenate()([up1, conv2])  # Ensure dimensions match
+conv4 = Conv2D(8, (3, 3), activation='relu', padding='same')(concat1)
+conv4 = Conv2D(8, (3, 3), activation='relu', padding='same')(conv4)
+```
+
+### Example 2: Importing a Model via NeuralFlow Python Client
+```python
+import neuralflow as nf
+
+NEURAL_FLOW_API_KEY="xxxxxxxxxxxxxxxxxxxx"
+
+model = nf.getModel(
+    id="xxxx-xxxx-xxxx",
+    api_key=NEURAL_FLOW_API_KEY
+)
+```
+
+---
+
+## 4. Troubleshooting & Tips
+
+### Common Issues
+- **Exported model file is corrupt or won’t load:**
+  - Verify file integrity.
+  - Confirm TensorFlow version compatibility.
+  - Try exporting again from NeuralFlow.
+
+- **API key authentication failures:**
+  - Ensure API key is correctly pasted without extra characters.
+  - Confirm your key is active and linked to the model deployment.
+  - Check network connectivity and endpoint URLs.
+
+- **Model code fails to run in Python:**
+  - Verify necessary Python dependencies like `tensorflow` are installed.
+  - Check for indentation or syntax changes during copy/paste.
+
+### Best Practices
+- Keep your exported models organized with version identifiers.
+- Use the NeuralFlow Python client for easier synchronization rather than manual downloads.
+- Regularly update your API keys and restrict permissions for security.
+
+### Performance Considerations
+- When deploying via API, monitor latency to ensure response times meet your use case.
+- For heavy inference workloads, consider batch calls or local deployment.
+
+### Alternative Approaches
+- Use saved TensorFlow model export/import for standard ML pipelines.
+- Leverage GitHub integration to version control exported code alongside your projects.
+
+---
+
+## 5. Next Steps & Related Content
+
+- **Explore:** [Build Your First Model (No Code)](/guides/core-workflows/first-model) to strengthen foundational model-building knowledge.
+- **Import Models:** See [Importing and Using Pretrained TensorFlow Models](/guides/core-workflows/import-model) for advanced import techniques.
+- **Integrations Overview:** Review [Integration with Other Systems](/overview/features-integration/integrations-overview) to broaden your workflow.
+- **API Deployment:** Learn more about deploying your models programmatically via API keys in [Quick Feature Overview](/overview/features-integration/feature-snapshot).
+
+---
+
+Leverage these integration capabilities to enhance your ML pipeline — whether you’re building, testing, or deploying, NeuralFlow ensures your models live where you need them with minimal friction.

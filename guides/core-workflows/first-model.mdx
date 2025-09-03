@@ -1,0 +1,184 @@
+---
+title: "Build Your First Model (No Code)"
+description: "A hands-on, step-by-step guide to visually assembling a machine learning model using NeuralFlow’s click-to-connect interface. Users learn to navigate the interface, add layers, connect components, and understand the workflow from data input to model output—all without writing a single line of code."
+---
+
+# Build Your First Model (No Code)
+
+Welcome to your hands-on guide for building your first machine learning model using NeuralFlow’s intuitive no-code interface. This page walks you through visually assembling your model step-by-step — from adding layers to connecting them and understanding the entire data flow — all without writing a single line of code.
+
+---
+
+## 1. What You Will Accomplish
+
+This guide will help you:
+
+- Navigate the NeuralFlow visual model builder interface.
+- Add and configure model layers using a click-to-connect system.
+- Connect layers to shape the neural network's workflow.
+- Understand the flow of data from input through to output.
+- Complete a functional model ready for training or deployment.
+
+### Prerequisites
+
+Before you start, ensure:
+
+- You have access to the NeuralFlow platform and are logged in.
+- Your workspace or project is set up and ready for model building.
+- Basic understanding of machine learning concepts like layers and model architecture will be helpful but not mandatory.
+
+### Expected Outcome
+
+By completing this guide, you will have visually constructed a simple neural network model using NeuralFlow's drag-and-drop interface, fully connected and ready for next steps like training or exporting.
+
+### Time Estimate
+
+Approximately 15-20 minutes.
+
+### Difficulty Level
+
+Beginner-friendly. Designed for users new to machine learning and no-code environments.
+
+---
+
+## 2. Getting Started with the Visual Model Builder
+
+NeuralFlow's visual builder is designed for simplicity and clarity. Let's start by familiarizing yourself with its core interface elements.
+
+### Step 1: Open the Model Builder
+
+- Access your workspace and open a new or existing project.
+- Navigate to the 'Model Builder' section to launch the visual canvas.
+
+#### What you see:
+
+- A blank workspace (canvas) where layers will appear as nodes.
+- A sidebar or menu listing available layers (e.g., Conv2D, MaxPooling, Dense).
+- Controls for zooming, panning, and undoing/redoing changes.
+
+### Step 2: Add Layers to the Canvas
+
+- Click on the desired layer from the layer palette to add it to the canvas.
+- Example: Start by adding an `Input Layer` to serve as the entry point for your data.
+
+#### Expected result:
+
+- The new layer appears as a node on the canvas with a default position.
+
+### Step 3: Configure Layer Parameters
+
+- Click on a layer node to open its configuration panel.
+- Adjust parameters such as units, activation functions, kernel size, etc., depending on the layer type.
+
+#### Tips:
+
+- Required fields are clearly marked.
+- Default values are provided to get you started quickly.
+
+### Step 4: Connect Layers to Define Data Flow
+
+- Click and drag from the output socket (typically on the right side) of one layer node to the input socket (typically on the left side) of the next.
+- This action creates a visible connection (edge) representing the flow of data.
+- Continue linking layers to form the desired model architecture.
+
+#### Expected result:
+
+- Connections appear as lines between the nodes.
+- The model graph visually represents the order of operations.
+
+### Step 5: Review the Model Workflow
+
+- Ensure your data input starts from the `Input Layer` and flows logically through each connected layer toward the final output layer.
+- Use zoom and pan controls to inspect complex connections.
+
+### Step 6: Save Your Model
+
+- After building and connecting layers, click the 'Save' or 'Export' button.
+- NeuralFlow saves the model configuration for training and further use.
+
+---
+
+## 3. Understanding the Model Workflow
+
+By visually connecting layers, you define how data moves from raw input to final output predictions. Here’s what happens behind the scenes:
+
+- **Input Layer:** Captures and formats incoming data.
+- **Hidden Layers (e.g., Conv2D, Dense):** Process data through transformations.
+- **Pooling Layers:** Reduce dimensionality while preserving features.
+- **Output Layer:** Produces the final result (classification, regression, etc.).
+
+Each connection you make models this flow, so the interface’s clarity helps avoid mistakes in your model's structure.
+
+---
+
+## 4. Practical Example: Building a Simple Image Classifier
+
+Let’s put theory into practice with a common model example:
+
+1. **Add an `Input Layer`** with shape matching your image data (e.g., 28x28x1 for grayscale images).
+2. **Add a `Conv2D Layer`** with 32 filters, kernel size 3x3, activation 'relu'.
+3. **Add a `MaxPooling2D Layer`** with pool size 2x2.
+4. **Add a `Flatten Layer`** to convert 2D feature maps to 1D vector.
+5. **Add a `Dense Layer`** with 128 units and activation 'relu'.
+6. **Add an `Output Layer`** with units matching your number of classes, activation 'softmax'.
+
+Connect these layers in the order above. Configure parameters by selecting each node.
+
+---
+
+## 5. Tips and Best Practices
+
+- **Keep model architecture clear and logical:** Avoid branching mistakes or disconnected layers.
+- **Use default parameters to start:** You can tune them later after initial testing.
+- **Name your layers meaningfully:** Helps clarity as your model grows.
+- **Utilize undo/redo:** Mistakes are easy to fix without losing progress.
+- **Save often:** The visual builder auto-saves, but manual saves ensure no loss.
+
+---
+
+## 6. Troubleshooting Common Issues
+
+<AccordionGroup title="Common Issues & Solutions">
+<Accordion title="Cannot connect layers">
+- Ensure that the output socket of the source layer and input socket of the target layer are compatible.
+- Confirm that the maximum number of allowed connections for the layer is not exceeded.
+- Check if the layers support multiple inputs or outputs if connecting in parallel.
+</Accordion>
+<Accordion title="Layer configuration options missing or disabled">
+- Make sure you have selected the layer node before adjusting parameters.
+- Refresh the page or restart the builder if configurations fail to load.
+- Contact support if the issue persists.
+</Accordion>
+<Accordion title="Model does not save or export">
+- Verify your internet connection if using the cloud platform.
+- Check for browser compatibility issues.
+- Try a different browser or clear cache.
+</Accordion>
+</AccordionGroup>
+
+---
+
+## 7. Next Steps
+
+After successfully building your first model, consider:
+
+- Proceeding to the [Importing and Using Pretrained TensorFlow Models](/guides/core-workflows/import-model) to combine visual building with pretrained resources.
+- Exploring model training within NeuralFlow or exporting the model to your preferred environment.
+- Learning about integration options like GitHub synchronization and API accessibility ([Integration Overview](/overview/features-integration/integrations-overview)).
+
+---
+
+## Additional Resources
+
+- [What is NeuralFlow?](/overview/product-intro/what-is-neuralflow) — Get to know the platform’s vision and capabilities.
+- [Core Concepts & Terminology](/overview/architecture-concepts/core-concepts) — Understand the foundational elements behind the scenes.
+- [Quick Feature Overview](/overview/features-integration/feature-snapshot) — A snapshot of all major features including the visual model builder.
+
+
+#### Ready to build your model? Launch the NeuralFlow Model Builder and start clicking to connect!
+
+---
+
+<Callout type="info">
+If you encounter any unexpected behavior, remember that the visual builder is optimized for ease but still respects underlying ML principles. Reviewing connections and parameter settings thoroughly will prevent common pitfalls.
+</Callout>

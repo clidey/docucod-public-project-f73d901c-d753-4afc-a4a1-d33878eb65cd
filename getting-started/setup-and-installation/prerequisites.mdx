@@ -1,0 +1,184 @@
+---
+title: "Prerequisites & System Requirements"
+description: "Outlines required software, supported platforms, and environment considerations to ensure a smooth start with NeuralFlow. Clarifies Node.js, npm/yarn/bun/pnpm versions, and other essential dependencies."
+---
+
+# Prerequisites & System Requirements
+
+Gain a seamless start with NeuralFlow by ensuring your development environment meets the essential software versions and dependencies outlined in this guide. This page details the required platforms, Node.js versions, package managers, and environment conditions for optimal use.
+
+---
+
+## 1. Supported Platforms
+
+NeuralFlow is developed as a modern web application built with Next.js. It supports the following operating systems for development:
+
+- **Windows 10 and higher**
+- **macOS Mojave (10.14)+ and higher**
+- **Linux distributions with recent Node.js support (Ubuntu 20.04+, Fedora 34+ recommended)**
+
+Ensure your OS is up to date with security patches and has administrative privileges for installing development dependencies.
+
+---
+
+## 2. Node.js & Package Managers
+
+NeuralFlow requires Node.js to run and build the application. It is compatible with the following versions and package manager ecosystems:
+
+| Component           | Supported Versions / Options           |
+|---------------------|--------------------------------------|
+| Node.js             | 16.x, 18.x (LTS recommended)          |
+| Package Managers    | npm, yarn, pnpm, bun                  |
+
+### Installing Node.js
+
+- Download the appropriate Node.js LTS installer from the [official Node.js website](https://nodejs.org/en/download/).
+- Verify installation by running:
+
+```bash
+node --version
+```
+
+You should see a version output starting with `v16` or `v18`.
+
+### Package Manager Options
+
+NeuralFlow supports multiple JavaScript package managers to suit your workflow preferences:
+
+- **npm** (comes by default with Node.js)
+- **yarn** (Classic or Berry)
+- **pnpm**
+- **bun**
+
+Install your preferred package manager if not already installed. Here are quick installation snippets for yarn and pnpm:
+
+```bash
+# Yarn
+npm install -g yarn
+
+# pnpm
+npm install -g pnpm
+```
+
+For bun, refer to its [official documentation](https://bun.sh/docs/installation).
+
+<Tip>
+Choose one package manager and use it consistently within your NeuralFlow project to avoid dependency conflicts.
+</Tip>
+
+---
+
+## 3. Additional Dependencies
+
+NeuralFlow leverages Next.js framework and Tailwind CSS. These are managed as Node packages within the project and will be installed via the package manager.
+
+Before running NeuralFlow, ensure you have:
+
+- **Git** installed for cloning the repository and managing version control.
+- A modern browser (Google Chrome, Firefox, Edge, or Safari) for accessing the web interface.
+
+### Installing Git
+
+Download and install Git from [https://git-scm.com/downloads](https://git-scm.com/downloads).
+
+Verify installation:
+
+```bash
+git --version
+```
+
+---
+
+## 4. Environment and Permissions
+
+- You need **read-write access** to the project directory for dependency installation.
+- Have your **Google OAuth credentials** ready for authentication integration if you plan to use the Google sign-in feature (optional but recommended).
+
+<Note>
+Google Client ID and Secret are required environment variables for authentication. These are typically set in your `.env` file as `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`.
+</Note>
+
+---
+
+## 5. Summary Checklist
+
+Before proceeding to installation and initial setup, confirm the following:
+
+- [ ] Operating system supported and updated
+- [ ] Node.js installed (version 16.x or 18.x)
+- [ ] Preferred package manager installed (npm, yarn, pnpm, or bun)
+- [ ] Git installed and configured
+- [ ] Modern web browser available
+- [ ] Access to environment variables for authentication if applicable
+
+---
+
+## 6. Troubleshooting Common Environment Issues
+
+<Accordion title="Node.js Version Issues">
+Ensure you are using the LTS versions (16.x or 18.x). Running unsupported versions may cause build errors.
+
+Run:
+
+```bash
+node --version
+```
+
+Upgrade Node.js if necessary using your OS package manager or official installer.
+</Accordion>
+
+<Accordion title="Package Manager Conflicts">
+Avoid mixing package managers (e.g., installing with npm then running yarn). Stick with one manager to prevent dependency mismatches.
+
+If you face dependency issues, delete `node_modules` and reinstall:
+
+```bash
+rm -rf node_modules
+npm install
+```
+
+Replace `npm` with your chosen package manager.
+</Accordion>
+
+<Accordion title="Environment Variables Missing">
+If Google OAuth credentials are not set, authentication will fail.
+
+Add a `.env` file in the project root with:
+
+```bash
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+```
+
+Restart the development server after adding credentials.
+</Accordion>
+
+---
+
+## 7. Next Steps
+
+Once your environment conforms to these prerequisites, proceed to the [Installation guide](/getting-started/setup-and-installation/installation) to set up NeuralFlow on your machine.
+
+For an overview of usage and first run verification, see the [First Run & Verification](/getting-started/setup-and-installation/first-run) page.
+
+---
+
+## References & Further Reading
+
+- [Node.js Official Downloads](https://nodejs.org/en/download/)
+- [Yarn Package Manager](https://yarnpkg.com/)
+- [pnpm Package Manager](https://pnpm.io/)
+- [Bun Runtime](https://bun.sh/)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Git Installation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+
+---
+
+Explore related setup topics:
+- [Installation](/getting-started/setup-and-installation/installation)
+- [Configuration Steps](/getting-started/configuration-and-troubleshooting/configuration-steps)
+
+<Tip>
+Preparing your system correctly saves time and prevents common setup pitfalls. Follow this guide carefully before installation.
+</Tip>
