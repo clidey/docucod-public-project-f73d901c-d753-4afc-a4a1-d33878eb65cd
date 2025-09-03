@@ -1,0 +1,172 @@
+---
+title: "Installation"
+description: "Step-by-step instructions for downloading and installing NeuralFlow, including cloning the repository and installing dependencies with the package manager of choice. Highlights options for multiple platforms and environments."
+---
+
+# Installation Guide for NeuralFlow
+
+Welcome to NeuralFlow! This guide will walk you through downloading and installing NeuralFlow on your machine step-by-step. Whether you are on Windows, macOS, or Linux, you will find instructions for cloning the repository and installing dependencies using the package manager you prefer. By following these steps, you'll have NeuralFlow ready for your first machine learning project in no time.
+
+---
+
+## 1. Prerequisites
+
+Before you begin the installation, ensure your system meets the following requirements:
+
+- **Node.js**: NeuralFlow is built on Next.js and requires Node.js. Recommended versions are Node.js 16.x or newer.
+- **Git**: For cloning the repository.
+- **Package Manager**: You can use `npm`, `yarn`, or `pnpm`. Choose whichever you prefer or have installed.
+
+<Tip>
+If you do not have Node.js or Git installed, download and install them from their official sites:
+
+- Node.js: https://nodejs.org/
+- Git: https://git-scm.com/
+</Tip>
+
+## 2. Cloning the NeuralFlow Repository
+
+Start by cloning the official NeuralFlow source code from GitHub.
+
+<Steps>
+<Step title="Open your terminal or command prompt">
+Open the terminal application on your OS.
+</Step>
+<Step title="Clone the repository">
+Run this command to clone the source code:
+
+```bash
+git clone https://github.com/thedevflex/neuralflow.git
+```
+This will download the entire NeuralFlow project into a local folder named `neuralflow`.
+</Step>
+<Step title="Navigate to the project folder">
+Change directories into the cloned repository:
+
+```bash
+cd neuralflow
+```
+This is where you will run all the subsequent commands.
+</Step>
+</Steps>
+
+<Check>
+Confirm the directory contains the project files by running:
+
+```bash
+ls # or `dir` on Windows
+```
+You should see files like `README.md`, `package.json`, and directories like `app` and `components`.
+</Check>
+
+## 3. Installing Dependencies
+
+NeuralFlow’s dependencies are managed via Node.js package managers. You may choose one of the recommended package managers.
+
+### Option A: Using npm (default with Node.js)
+
+Run the following command to install all required packages:
+
+```bash
+npm install
+```
+
+### Option B: Using yarn
+
+If you prefer yarn, make sure it’s installed, then run:
+
+```bash
+yarn install
+```
+
+### Option C: Using pnpm
+
+For pnpm, run:
+
+```bash
+pnpm install
+```
+
+<Tip>
+Use the package manager you are most comfortable with. The commands to run the development environment will also differ slightly (see First Run guide).
+</Tip>
+
+## 4. Verifying Installation
+
+Once dependencies are installed, verify a successful installation by running the development server.
+
+```bash
+npm run dev
+# or
+# yarn dev
+# or
+# pnpm dev
+```
+
+This command starts the Next.js development server and tells you the URL to open, typically `http://localhost:3000`.
+
+<Check>
+Open a web browser and navigate to `http://localhost:3000`.
+If you see the NeuralFlow welcome page or interface, the installation is successful.
+</Check>
+
+## 5. Platform-Specific Notes
+
+### Windows
+- Use Git Bash or Windows Terminal for best results.
+- Ensure environment variables are set if using WSL or PowerShell.
+
+### macOS
+- You can use the native Terminal.
+- Installing Node.js via Homebrew is recommended:
+
+```bash
+brew install node git
+```
+
+### Linux
+- Use your distro’s package manager to install Node.js and Git (e.g., apt, yum).
+- Verify Node.js version is 16 or higher.
+
+## 6. Common Issues and Troubleshooting
+
+<AccordionGroup title="Troubleshooting Installation Issues">
+<Accordion title="Installation freezes or stalls during npm install">
+Try clearing the npm cache:
+
+```bash
+npm cache clean --force
+npm install
+```
+
+Alternatively, try switching package managers (e.g., yarn instead of npm).
+</Accordion>
+<Accordion title="'npm run dev' throws errors about missing modules">
+Ensure `npm install` or equivalent completed successfully. Delete the `node_modules` folder and run the install command again.
+</Accordion>
+<Accordion title="Port 3000 already in use">
+Stop any other service running on port 3000, or start NeuralFlow at a different port:
+
+```bash
+PORT=3001 npm run dev
+```
+
+Adjust the URL accordingly.
+</Accordion>
+</AccordionGroup>
+
+## 7. Next Steps
+
+Now that you have NeuralFlow installed and running, you can:
+
+- Proceed to the [First Run & Verification](getting-started/setup-and-installation/first-run) guide to learn how to launch your first model.
+- Explore [Core Concepts & Terminology](overview/architecture-concepts/core-concepts) to understand how NeuralFlow works.
+- Review the [Quick Feature Overview](overview/features-integration/feature-snapshot) to see what you can build.
+
+<Tip>
+Bookmark the NeuralFlow [GitHub repository](https://github.com/thedevflex/neuralflow) to stay updated with the latest changes and report any issues.
+</Tip>
+
+---
+
+By following these instructions, you have set a solid foundation to explore NeuralFlow’s powerful no-code ML platform. Welcome aboard!
