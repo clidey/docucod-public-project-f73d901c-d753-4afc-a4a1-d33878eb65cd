@@ -1,0 +1,174 @@
+---
+title: "First Run & Verification"
+description: "Walks users through launching the development server and accessing NeuralFlow in the browser. Provides clear verification steps to confirm that the installation was successful, including what to expect on the initial home page."
+---
+
+# First Run & Verification
+
+Welcome to the critical first step after installing NeuralFlow! This guide walks you through launching your development server, accessing the NeuralFlow platform in your browser, and verifying that your installation is complete and working as expected. By the end, you'll confidently open NeuralFlow's home page and recognize key indicators of a successful setup.
+
+---
+
+## 1. Launching the Development Server
+
+To start using NeuralFlow locally, you need to run its development server. This server hosts your application and lets you interact with all its features through your browser.
+
+### Step-by-Step Instructions
+
+1. **Open your terminal or command prompt.**
+
+2. **Navigate to your NeuralFlow project directory.** Use `cd` to change to the root folder where you cloned or installed the project.
+
+   ```bash
+   cd path/to/neuralflow
+   ```
+
+3. **Start the development server.** Run one of the following commands depending on your package manager:
+
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+
+4. **Observe the terminal output.** You should see a message similar to:
+
+   ```
+   ready - compiled successfully
+   localhost:3000
+   ```
+
+   This indicates the server is running and ready.
+
+<Tip>
+If the server does not start or you encounter errors, verify you have installed all dependencies and met prerequisites as explained in the [Installation Guide](/getting-started/setup-and-installation/installation).
+</Tip>
+
+## 2. Accessing NeuralFlow in Your Browser
+
+Once the development server is running, open your preferred web browser (e.g., Chrome, Firefox, Edge) to access NeuralFlow.
+
+### How to Access
+
+- Navigate to the URL:
+
+  ```plaintext
+  http://localhost:3000
+  ```
+
+- This opens the NeuralFlow home page served by your local server.
+
+<Tip>
+Keep the terminal window open and running while you use NeuralFlow locally. Closing the server will disconnect your access.
+</Tip>
+
+## 3. Verifying a Successful Installation
+
+To confirm everything is configured correctly, you should check for the following key indicators on the home page:
+
+### What to Look For
+
+- **Page Title:** The browser tab should display `NeuralFlow`.
+
+- **Home Page Content:** You will see the first landing page featuring:
+  - A hero section introducing NeuralFlow.
+  - Visual elements such as node graphics or feature descriptions.
+  - Navigation UI such as the top navbar with the NeuralFlow logo and version number displayed as `v0.1.2 Beta`.
+
+- **No Errors:** The page loads without any visible errors or blank areas.
+
+### Troubleshooting Common Issues
+
+<AccordionGroup title="Troubleshooting Verification Steps">
+<Accordion title="Page Doesn't Load or Connect">
+- Check that your development server is still running.
+- Verify that you're using the correct URL `http://localhost:3000`.
+- Confirm there are no firewall or network restrictions blocking the connection.
+</Accordion>
+<Accordion title="Errors Displayed on Page">
+- Review the terminal window for errors during startup.
+- Clear your browser cache and reload.
+- Ensure all dependencies installed correctly prior to running the server.
+</Accordion>
+<Accordion title="Logo or Images Not Displaying">
+- Verify that your project files, especially under `/public/image`, are intact.
+- Check your browser's developer console for missing resource errors.
+</Accordion>
+</AccordionGroup>
+
+## 4. What To Do Next
+
+After confirming your first run is successful, consider these next steps to deepen your engagement with NeuralFlow:
+
+- Proceed to **[Build Your First Model (No Code)](/guides/core-workflows/first-model)** to start creating your neural networks visually.
+- Explore the **[Prerequisites & System Requirements](/getting-started/setup-and-installation/prerequisites)** in case you want to verify or upgrade your environment.
+- Review the **[Configuration Steps](/getting-started/configuration-and-troubleshooting/configuration-steps)** for personalizing your installation.
+
+---
+
+## Summary
+Launching and verifying your local NeuralFlow instance is straightforward. Run the development server, open `http://localhost:3000` in your browser, and confirm the home page loads correctly with expected branding and no errors. Troubleshooting tips are included to ensure a smooth experience. Once verified, you are ready to begin building models and exploring NeuralFlow's powerful no-code ML platform.
+
+
+---
+
+## Appendix: Sample Terminal Output
+
+```bash
+> neuralflow@0.1.0 dev
+> next dev
+
+ready - compiled successfully
+info  - Loaded env from /path/to/neuralflow/.env.local
+http://localhost:3000
+```
+
+## Appendix: Expected Home Page Screenshot
+
+![NeuralFlow Home Page](https://user-images.githubusercontent.com/placeholder/NeuralFlowHomePage.png)
+
+(This image shows the hero section with header text, node graphics, and a navigation bar with logo and version number.)
+
+
+---
+
+## Frequently Asked Questions
+
+<AccordionGroup title="FAQs">
+<Accordion title="What if I want to change the development port?">
+Edit the `package.json` or run the development server with an explicit port like `PORT=4000 npm run dev`.
+</Accordion>
+<Accordion title="Can I access NeuralFlow from other devices on my network?">
+By default, `localhost` restricts access to your machine. To enable access from other devices, configure Next.js to listen on your machine’s IP and update firewall settings.
+</Accordion>
+<Accordion title="Is this setup ready for production deployment?">
+This guide focuses on local development use. For production, review the deployment instructions in the [Next.js deployment documentation](https://nextjs.org/docs/deployment).
+</Accordion>
+</AccordionGroup>
+
+
+---
+
+## References
+
+- [Installation Guide](/getting-started/setup-and-installation/installation)
+- [Build Your First Model (No Code)](/guides/core-workflows/first-model)
+- [Prerequisites & System Requirements](/getting-started/setup-and-installation/prerequisites)
+- [Configuration Steps](/getting-started/configuration-and-troubleshooting/configuration-steps)
+- [Troubleshooting Common Issues](/getting-started/configuration-and-troubleshooting/troubleshooting)
+
+
+---
+
+## Support & Help
+
+If you encounter persistent issues, visit our GitHub repository for issue tracking or reach out on community forums:
+
+- GitHub Issues: [https://github.com/thedevflex/neuralflow/issues](https://github.com/thedevflex/neuralflow/issues)
+- Official Documentation: [NeuralFlow Documentation Home](https://docs.neuralflow.com)
+
+Keep exploring NeuralFlow, and start your no-code ML journey with confidence!
