@@ -1,0 +1,100 @@
+{
+  "background": {
+    "decoration": "gradient"
+  },
+  "colors": {
+    "dark": "#1E3A8A",
+    "light": "#60A5FA",
+    "primary": "#60A5FA"
+  },
+  "favicon": "/favicon.svg",
+  "fonts": {
+    "family": "Montserrat",
+    "format": "woff2",
+    "source": "https://fonts.gstatic.com/s/googlesansflex/v5/t5sJIQcYNIWbFgDgAAzZ34auoVyXkJCOvp3SFWJbN5hF8Ju1x6sKCyp0l9sI40swNJwGpVd4AZzz0v6lJ4qFXNZhGjLvDSkV4USKMo6qQzwliVdHAy9jxTDHg_ugnAakpwGc-cxgUqDCIUI.woff2"
+  },
+  "icons": {
+    "library": "fontawesome"
+  },
+  "logo": {
+    "dark": "./logo/logo.svg",
+    "light": "./logo/logo.svg"
+  },
+  "name": "NeuralFlow",
+  "navigation": {
+    "tabs": [
+      {
+        "groups": [
+          {
+            "group": "Product Introduction \u0026 Value",
+            "pages": [
+              "overview/product-intro/what-is-neuralflow",
+              "overview/product-intro/value-proposition",
+              "overview/product-intro/target-audience-use-cases"
+            ]
+          },
+          {
+            "group": "Architecture \u0026 Core Concepts",
+            "pages": [
+              "overview/architecture-concepts/product-architecture",
+              "overview/architecture-concepts/core-concepts"
+            ]
+          },
+          {
+            "group": "Feature Overview \u0026 Integrations",
+            "pages": [
+              "overview/features-integration/feature-snapshot",
+              "overview/features-integration/integrations-overview"
+            ]
+          }
+        ],
+        "tab": "Overview"
+      },
+      {
+        "groups": [
+          {
+            "group": "Setup \u0026 Installation",
+            "pages": [
+              "getting-started/setup-and-installation/prerequisites",
+              "getting-started/setup-and-installation/installation",
+              "getting-started/setup-and-installation/first-run"
+            ]
+          },
+          {
+            "group": "Configuration \u0026 Troubleshooting",
+            "pages": [
+              "getting-started/configuration-and-troubleshooting/configuration-steps",
+              "getting-started/configuration-and-troubleshooting/troubleshooting"
+            ]
+          }
+        ],
+        "tab": "Getting Started"
+      },
+      {
+        "groups": [
+          {
+            "group": "Getting Started \u0026 Core Workflows",
+            "pages": [
+              "guides/core-workflows/first-model",
+              "guides/core-workflows/import-model",
+              "guides/core-workflows/project-setup"
+            ]
+          },
+          {
+            "group": "Real-World Use Cases \u0026 Integration",
+            "pages": [
+              "guides/use-cases-integration/ml-scenarios",
+              "guides/use-cases-integration/integration-examples",
+              "guides/use-cases-integration/advanced-tips"
+            ]
+          }
+        ],
+        "tab": "Guides"
+      }
+    ]
+  },
+  "styling": {
+    "codeblocks": "dark",
+    "eyebrows": "breadcrumbs"
+  }
+}
